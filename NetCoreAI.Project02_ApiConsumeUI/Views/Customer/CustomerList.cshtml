@@ -1,0 +1,32 @@
+﻿@model List<ResultCustomerViewModel>
+
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br/>
+    <br/>
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Müşteri Adı Soyadı</th>
+            <th>Müşteri Bakiye</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach(var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerID</td>
+                <td>@customer.CustomerName @customer.CustomerSurname</td>
+                <td>@customer.CustomerBalance</td>
+                <td><a href="/Customer/DeleteCustomer/@customer.CustomerID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Customer/UpdateCustomer/@customer.CustomerID" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Customer/CreateCustomer/" class="btn btn-primary">Yeni Müşteri Girişi</a>
+</div>
